@@ -1,31 +1,106 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void binaryConverter(int userInt)
- {
-     
-    if (userInt == 0) {
-         printf("0");
-         return;
-         }
-    
-    int binary[32];
-    int index = 0;
-    
-    while (userInt > 0 ) {
-        
-        binary[index] = userInt % 2;
-        index++;
-        userInt = userInt / 2;
-        }
-    
-    for(int i = index - 1; i >= 0; i--) {
-        printf("%d", binary[i]);
-        }
-    
+
+/* Write a C program that accepts an employee's ID, total worked hours in a month and
+the amount received per hour. Print the ID and salary (with two decimal places) of the
+employee for a particular month.*/
+
+
+int main(){
+    int ID, amount_per_hour;
+    float total_hours_worked;
+
+    printf("Enter Employee ID: ");
+    scanf("%d", ID);
+    printf("Enter amount received per hour: ");
+    scanf("%d", amount_per_hour);
+    printf("Enter total hours worked: ");
+    scanf("%f", total_hours_worked);
+
+    printf("The total salary of Employee (ID = %d) is Rs.%.2f/= ", ID, amount_per_hour * total_hours_worked);
+    return 0;
 }
 
-int main(int argc, char **argv)
-{   
-    binaryConverter(112);
-    
+
+/* Write a C program that takes the height and width of a rectangle as an input from user
+and compute the perimeter and area of a rectangle. */
+
+
+int main()
+{
+    float width, height;
+    printf("The width of the rectangle: ");
+    scanf("%f", &width);
+
+    printf("The height of the rectangle: ");
+    scanf("%f", &height);
+
+    printf("Rectangle has an area of %.2f and a perimeter of %.2f", height*width, height*2+width*2);
+    return 0;
+}
+
+
+/* Write a C program to accept the height of a person in centimeters and categorize the
+person according to his height. (Height < 150cm – Dwarf, Height=150cm – Average,
+Height>=165cm – Tall). */
+
+int main(){
+    float height;
+    printf("Enter your height ( >:) ): ");
+    scanf("%f", &height);
+    if (height<150) printf("You are a dwarf");
+    else if (height==150) printf("You are of Average height");
+    else if (height>=165) printf("You are tall");
+}
+
+
+/* Write a program in C to convert a decimal number to a binary number using functions. */
+
+oid decimalToBinary(int number, int x)
+{
+    if (x < 4)
+    {
+        if (number >= 1)
+        {
+            decimalToBinary(number / 2, x + 1);
+            printf("%d", number % 2);
+        }
+        else if (number == 0) printf("0000");
+    }
+}
+
+int main()
+{
+    int decimcal;
+    printf("Enter a decimal number: ");
+    scanf("%d", &decimal);
+    decimalToBinary(decimal, 0);
+    return 0;
+}
+
+
+/* Write a function to calculate the nth Fibonacci number and call it recursively to print
+the Fibonacci series. */
+
+int Fibonacci(int number)
+{
+    if (number <= 1)
+    {
+        return number;
+    }
+    return Fibonacci(number - 1) + Fibonacci(number - 2);
+}
+
+int main()
+{
+    int nth;
+    printf("How many number of terms? ");
+    scanf("%d", &nth);
+    printf("Fibonacci Series: \n\n");
+    for (int i = 0; i < nth; i++)
+    {
+        printf("%d ", Fibonacci(i));
+    }
+    return 0;
 }
