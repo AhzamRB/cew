@@ -1,0 +1,182 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+// Question 1:
+// Write a C program to display the first n odd natural numbers and their sum using for, while and
+// do-while loop.
+
+int main()
+{
+    int nums;
+    printf("How many integers: "); scanf("%d", &nums);
+    printf("Using For Loop\n");
+
+    for (int i=1; i<nums; i+=2)
+    {
+        printf("%d,", i);
+    }
+    printf("\nUsing While Loop\n");
+
+    int i = 1;
+
+    while (i<nums)
+    {
+        printf("%d,", i);
+        i+=2;
+    }
+
+    printf("\nUsing Do While Loop\n");
+    i = 1;
+
+    do {
+        printf("%d,", i);
+        i+=2;
+    }
+    while (i<nums);
+
+}
+
+
+// Question 2:
+// Write a C program to make the following pattern as a pyramid with an asterisk.
+
+
+int main()
+{
+    int num;
+    printf("Length of the pyrmid: ");
+    scanf("%d", &num);
+    for (int i = 0; i<num; i++)
+    {
+        for (int j = 0; j<num; j++)
+        {
+            if (i+j>num-2){
+                printf("* ");
+            }
+            else{
+                printf(" ");
+            }
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+// Question 3:
+// Write a C program to compare two strings without using string library functions.
+
+int main() {
+    char string1[50];
+    char string2[50];
+    int i = 0;
+
+    printf("Enter first string: ");
+    scanf("%s", string1);
+    printf("Enter second string: ");
+    scanf("%s", string2);
+
+    while (string1[i] != '\0' && string2[i] != '\0') { 
+        if (string1[i] != string2[i]) {
+            printf("Unequal strings\n");
+            return 0;
+        }
+        i++;
+    }
+
+    if (string1[i] == '\0' && string2[i] == '\0') {
+        printf("Equal strings\n"); 
+    } else printf("Unequal strings\n");
+
+    return 0;
+}
+
+// Question 4:
+// Write a C program to read a sentence and replace lowercase characters with uppercase and vice
+// versa.
+
+int main() {
+    char sentence[1000];
+    printf("Enter a sentence: ");
+    fgets(sentence, sizeof(sentence), stdin);
+
+    for (int i = 0; sentence[i] != '\0'; i++) {
+        if (sentence[i] >= 'a' && sentence[i] <= 'z') {
+            sentence[i] = sentence[i] - 'a' + 'A';
+        } else if (sentence[i] >= 'A' && sentence[i] <= 'Z') {
+            sentence[i] = sentence[i] - 'A' + 'a';
+        }
+    }
+
+    printf("Modified sentence: %s", sentence);
+
+    return 0;
+}
+
+
+// Question 5:
+// Write a C program to print all unique elements in an array.
+
+int main() {
+    int array[] = {1, 2, 3, 2, 4, 5, 7, 7, 6, 7, 8};
+    int length = sizeof(array) / sizeof(array[0]);
+
+    printf("Unique elements in the array: ");
+    for (int i = 0; i < length; i++) {
+        int isUnique = 1;
+        for (int j = 0; j < i; j++) {
+            if (array[i] == array[j]) {
+                isUnique = 0;
+                break;
+            }
+        }
+        if (isUnique) {
+            printf("%d ", array[i]);
+        }
+    }
+    printf("\n");
+    return 0;
+}
+
+
+// Question 6:
+// Write a C program to add two distances in inch-feet system using structures.
+
+struct Distance {
+    int feet;
+    int inches;
+};
+struct Distance addDistances(struct Distance d1, struct Distance d2) {
+    struct Distance sum;
+    sum.feet = d1.feet + d2.feet;
+    sum.inches = d1.inches + d2.inches;
+
+    if (sum.inches>=12) {
+        sum.feet++;
+        sum.inches-=12;
+    }
+    return sum;
+}
+
+int main() {
+    struct Distance d1;
+    printf("Enter feet: ");
+    scanf("%d", &d1.feet);
+    printf("Enter inches: ");
+    scanf("%d", &d1.inches);
+
+    printf("\n");
+
+    struct Distance d2;
+    printf("Enter feet: ");
+    scanf("%d", &d2.feet);
+    printf("Enter inches: ");
+    scanf("%d", &d2.inches);
+
+    struct Distance addition = addDistances(d1, d2);
+    printf("%d\'%d\" + %d\'%d\" = %d\'%d\"", d1.feet, d1.inches, d2.feet, d2.inches, addition.feet, addition.inches);
+    return 0;
+    
+}
+
